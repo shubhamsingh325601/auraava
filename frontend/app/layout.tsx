@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
+import FetchOverride from "@/components/fetch-override"
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://auraava.com'),
@@ -85,10 +85,6 @@ export default function RootLayout({
                 <link rel="apple-touch-icon" href="/bgimage/logo2.png" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
                 <meta name="theme-color" content="#C8DDD0" />
-                <Script
-                    src="/api-override.js"
-                    strategy="beforeInteractive"
-                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -117,6 +113,7 @@ export default function RootLayout({
                 />
             </head>
             <body className="overflow-x-hidden">
+                <FetchOverride />
                 <CartProvider>{children}</CartProvider>
             </body>
         </html>
