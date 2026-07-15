@@ -1,0 +1,22 @@
+# https://www.robotstxt.org/robotstxt.html
+# Allow all search engines to crawl public pages
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://auraava.com/sitemap.xml
+
+
