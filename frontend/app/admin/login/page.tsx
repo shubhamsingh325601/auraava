@@ -29,8 +29,10 @@ export default function AdminLoginPage() {
             const data = await res.json()
 
             if (res.ok) {
-                router.push('/admin')
-                router.refresh()
+                if (data.token) {
+                    document.cookie = `admin-session=${data.token}; path=/; max-age=86400; SameSite=Lax; Secure`
+                }
+                window.location.href = '/admin'
             } else {
                 setError(data.error || 'Invalid credentials')
             }

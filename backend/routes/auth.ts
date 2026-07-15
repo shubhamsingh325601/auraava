@@ -35,7 +35,7 @@ router.post('/login', loginLimiter, async (req: Request, res: Response) => {
             path: '/',
         })
 
-        res.json({ success: true, message: 'Login successful' })
+        res.json({ success: true, message: 'Login successful', token })
     } catch (error) {
         console.error('Login error:', error)
         res.status(500).json({ error: 'An error occurred during login' })
