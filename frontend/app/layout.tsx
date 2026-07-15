@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
-import FetchOverride from "@/components/fetch-override"
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://auraava.com'),
@@ -113,7 +112,6 @@ export default function RootLayout({
                 />
             </head>
             <body className="overflow-x-hidden">
-                <FetchOverride />
                 <CartProvider>{children}</CartProvider>
             </body>
         </html>

@@ -36,8 +36,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([])
     const [isHydrated, setIsHydrated] = useState(false)
 
-    // Hydrate from localStorage after mount to avoid SSR/client markup mismatches
+    // Override fetch at runtime to route /api/* calls to the backend directly
+    const API_BASE = 'https://auraava-api.onrender.com'
     useEffect(() => {
+        const origFetch = window.fetch.bind(window)
+        window.fetch = function (input, init) {
+            if (typeof input === 'string' && input.startsWith('/api/')) {
+                input = API_BASE + input
+            } else if (input instanceof Request && input.url.startsWith('/api/')) {
+                input = new Request(API_BASE + input.url, input)
+            }
+            return origFetch(input, init)
+        }
+
         try {
             const raw = window.localStorage.getItem(STORAGE_KEY)
             if (raw) {
