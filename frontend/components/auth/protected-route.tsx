@@ -4,8 +4,15 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://auraava-api.onrender.com'
+
 interface ProtectedRouteProps {
     children: React.ReactNode
+}
+
+function getCookie(name: string) {
+    const m = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))
+    return m ? decodeURIComponent(m[1]) : null
 }
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
@@ -18,9 +25,17 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
     const checkAuth = async () => {
         try {
-            const res = await fetch('/api/auth/check', {
+            const token = getCookie('admin-session')
+
+            if (!token) {
+                setIsAuthenticated(false)
+                router.push('/admin/login')
+                return
+            }
+
+            const res = await fetch(`${API_BASE}/api/auth/check`, {
                 method: 'GET',
-                credentials: 'include',
+                headers: { Authorization: `Bearer ${token}` },
             })
 
             if (res.ok) {
