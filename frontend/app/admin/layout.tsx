@@ -14,6 +14,7 @@ import {
     Users,
     BarChart3,
     LogOut,
+    ClipboardList,
 } from "lucide-react"
 
 const NAV_ITEMS = [
@@ -25,6 +26,7 @@ const NAV_ITEMS = [
     { href: "/admin/faqs", label: "FAQs", icon: HelpCircle, match: "/admin/faqs" },
     { href: "/admin/hair-care", label: "Hair Care", icon: Sparkles, match: "/admin/hair-care" },
     { href: "/admin/instagram", label: "Instagram", icon: Instagram, match: "/admin/instagram" },
+    { href: "/admin/hair-quiz", label: "Hair Quiz", icon: ClipboardList, match: "/admin/hair-quiz" },
     { href: "/admin/about-us", label: "About Us", icon: Users, match: "/admin/about-us" },
     { href: "/admin/stats", label: "Statistics", icon: BarChart3, match: "/admin/stats" },
 ]

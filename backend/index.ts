@@ -17,6 +17,7 @@ import statsRoutes from './routes/stats'
 import aboutUsRoutes from './routes/about-us'
 import offersRoutes from './routes/offers'
 import instagramRoutes from './routes/instagram'
+import hairQuizRoutes from './routes/hair-quiz'
 import skincareRoutes from './routes/skincare'
 import settingsRoutes from './routes/settings'
 import uploadRoutes from './routes/upload'
@@ -67,6 +68,7 @@ app.use('/api/stats', statsRoutes)
 app.use('/api/about-us', aboutUsRoutes)
 app.use('/api/offers', offersRoutes)
 app.use('/api/instagram', instagramRoutes)
+app.use('/api/hair-quiz', hairQuizRoutes)
 app.use('/api/skincare', skincareRoutes)
 app.use('/api/hair-care', skincareRoutes) // Alias for hair-care
 app.use('/api/settings', settingsRoutes)
