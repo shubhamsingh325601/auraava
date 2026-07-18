@@ -53,6 +53,7 @@ const config: Config = {
                 sage: "var(--bg-sage)",
                 deep: "var(--bg-deep)",
                 blush: "var(--bg-blush)",
+                tan: "var(--bg-tan)",
                 ivory: "var(--bg-base)",
                 "nav-top": "var(--nav-top)",
                 "nav-secondary": "var(--nav-secondary)",

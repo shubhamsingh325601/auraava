@@ -16,7 +16,7 @@ interface OfferItem {
     link: string
 }
 
-const BANDS = ["bg-sage", "bg-blush", "bg-cream"]
+const BAND_COLOR = "bg-cream"
 
 export default function SpecialOffers() {
     const [sectionTitle, setSectionTitle] = useState("✨ Mega Sale Week ✨")
@@ -85,8 +85,8 @@ export default function SpecialOffers() {
                 {/* Offer Cards */}
                 <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto text-left">
                     {offers.map((offer, i) => (
-                        <Reveal key={offer.id} delay={i * 0.08}>
-                            <article className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-shadow bg-ivory text-foreground">
+                        <Reveal key={offer.id} delay={i * 0.08} className="h-full">
+                            <article className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-shadow bg-ivory text-foreground h-full flex flex-col">
                                 <div className="relative aspect-[5/4] overflow-hidden bg-cream">
                                     <Image
                                         src={offer.image}
@@ -98,12 +98,12 @@ export default function SpecialOffers() {
                                         {offer.discount}
                                     </span>
                                 </div>
-                                <div className={`p-6 ${BANDS[i % BANDS.length]}`}>
+                                <div className={`p-6 flex flex-col flex-1 ${BAND_COLOR}`}>
                                     <h3 className="font-serif text-xl text-primary">{offer.title}</h3>
                                     <p className="mt-2 text-sm text-muted-foreground">{offer.description}</p>
                                     <Link
                                         href={offer.link || "/shop"}
-                                        className="mt-4 inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.18em] font-semibold text-accent hover:gap-2 transition-all min-h-[44px]"
+                                        className="mt-auto inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.18em] font-semibold text-accent hover:gap-2 transition-all min-h-[44px]"
                                     >
                                         Shop now
                                     </Link>

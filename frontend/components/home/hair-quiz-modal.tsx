@@ -48,6 +48,30 @@ export default function HairQuizModal() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        if (!open) return
+
+        const scrollY = window.scrollY
+        const { style } = document.body
+        const originalPosition = style.position
+        const originalTop = style.top
+        const originalWidth = style.width
+        const originalOverflow = document.documentElement.style.overflow
+
+        document.documentElement.style.overflow = "hidden"
+        style.position = "fixed"
+        style.top = `-${scrollY}px`
+        style.width = "100%"
+
+        return () => {
+            document.documentElement.style.overflow = originalOverflow
+            style.position = originalPosition
+            style.top = originalTop
+            style.width = originalWidth
+            window.scrollTo(0, scrollY)
+        }
+    }, [open])
+
     if (pathname?.startsWith("/admin") || !open || !quiz) return null
 
     const totalSteps = quiz.questions.length + 1
@@ -105,7 +129,7 @@ export default function HairQuizModal() {
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50">
-            <div className="relative w-full max-w-lg bg-cream rounded-2xl shadow-hover p-8 max-h-[90vh] overflow-y-auto">
+            <div className="relative w-full max-w-lg bg-cream rounded-2xl shadow-hover p-8 max-h-[90vh] overflow-y-auto scrollbar-hide">
                 <button
                     type="button"
                     onClick={dismiss}

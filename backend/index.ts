@@ -15,6 +15,7 @@ import faqsRoutes from './routes/faqs'
 import testimonialsRoutes from './routes/testimonials'
 import statsRoutes from './routes/stats'
 import aboutUsRoutes from './routes/about-us'
+import founderStoriesRoutes from './routes/founder-stories'
 import offersRoutes from './routes/offers'
 import instagramRoutes from './routes/instagram'
 import hairQuizRoutes from './routes/hair-quiz'
@@ -66,6 +67,7 @@ app.use('/api/faqs', faqsRoutes)
 app.use('/api/testimonials', testimonialsRoutes)
 app.use('/api/stats', statsRoutes)
 app.use('/api/about-us', aboutUsRoutes)
+app.use('/api/founder-stories', founderStoriesRoutes)
 app.use('/api/offers', offersRoutes)
 app.use('/api/instagram', instagramRoutes)
 app.use('/api/hair-quiz', hairQuizRoutes)

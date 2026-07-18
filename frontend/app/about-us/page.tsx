@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import InstaGallerySection from "@/components/home/instagram";
+import FounderStoriesSection from "@/components/home/founder-stories";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import Newsletter from "@/components/layout/newsletter";
@@ -113,6 +114,8 @@ export default function AboutUsPage() {
                     </div>
                 </section>
             ))}
+
+            <FounderStoriesSection />
 
             <InstaGallerySection />
 

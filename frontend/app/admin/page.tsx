@@ -14,6 +14,7 @@ import {
     Sparkles,
     Instagram,
     Users,
+    Heart,
     BarChart3,
     ClipboardList,
     Loader2
@@ -28,6 +29,7 @@ interface SectionCount {
     hairCare: number | null
     instagram: number | null
     aboutUs: number | null
+    founderStories: number | null
     orders: number | null
 }
 
@@ -40,6 +42,7 @@ const SUMMARY_CARDS = [
     { key: "hairCare" as const, label: "Hair Care Tips", icon: Sparkles, href: "/admin/hair-care", cta: "Manage Hair Care" },
     { key: "instagram" as const, label: "Instagram Posts", icon: Instagram, href: "/admin/instagram", cta: "Manage Instagram" },
     { key: "aboutUs" as const, label: "About Us", icon: Users, href: "/admin/about-us", cta: "Manage About Us" },
+    { key: "founderStories" as const, label: "Founder Stories", icon: Heart, href: "/admin/founder-stories", cta: "Manage Founder Stories" },
 ]
 
 export default function AdminDashboard() {
@@ -52,6 +55,7 @@ export default function AdminDashboard() {
         hairCare: null,
         instagram: null,
         aboutUs: null,
+        founderStories: null,
         orders: null,
     })
     const [loading, setLoading] = useState(true)
@@ -62,7 +66,7 @@ export default function AdminDashboard() {
 
     const fetchAllCounts = async () => {
         try {
-            const [productsRes, offersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, ordersRes] = await Promise.all([
+            const [productsRes, offersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, founderStoriesRes, ordersRes] = await Promise.all([
                 fetch('/api/products'),
                 fetch('/api/offers'),
                 fetch('/api/testimonials'),
@@ -70,10 +74,11 @@ export default function AdminDashboard() {
                 fetch('/api/hair-care'),
                 fetch('/api/instagram'),
                 fetch('/api/about-us'),
+                fetch('/api/founder-stories'),
                 fetch('/api/admin/orders', { credentials: 'include' }),
             ])
 
-            const [productsData, offersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, ordersData] = await Promise.all([
+            const [productsData, offersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, founderStoriesData, ordersData] = await Promise.all([
                 productsRes.json(),
                 offersRes.json(),
                 testimonialsRes.json(),
@@ -81,6 +86,7 @@ export default function AdminDashboard() {
                 hairCareRes.json(),
                 instagramRes.json(),
                 aboutUsRes.json(),
+                founderStoriesRes.json(),
                 ordersRes.ok ? ordersRes.json() : Promise.resolve({ orders: [] }),
             ])
 
@@ -92,6 +98,7 @@ export default function AdminDashboard() {
                 hairCare: (hairCareData.items || []).length,
                 instagram: (instagramData.posts || []).length,
                 aboutUs: (aboutUsData.sections || []).length,
+                founderStories: (founderStoriesData.stories || []).length,
                 orders: (ordersData.orders || []).length,
             })
         } catch (error) {

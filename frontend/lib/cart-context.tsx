@@ -37,7 +37,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [isHydrated, setIsHydrated] = useState(false)
 
     // Override fetch at runtime to route /api/* calls to the backend directly
-    const API_BASE = 'https://auraava-api.onrender.com'
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://auraava-api.onrender.com'
     useEffect(() => {
         const origFetch = window.fetch.bind(window)
         window.fetch = function (input, init) {
