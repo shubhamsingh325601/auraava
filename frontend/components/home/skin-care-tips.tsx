@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { ShopNowCta } from "@/components/home/shop-now-cta"
 
 interface HairCareItem {
     id: string
@@ -84,14 +87,21 @@ export default function SkinCareSection({ variant = "home" }: SkinCareSectionPro
                                     }`}
                             >
                                 {/* Image */}
-                                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-cream shadow-card">
+                                <Link
+                                    href="/products"
+                                    className="group relative block w-full aspect-[4/5] rounded-2xl overflow-hidden bg-cream shadow-card"
+                                >
                                     <Image
                                         src={step.image}
                                         alt={step.title}
                                         fill
-                                        className="object-cover hover:scale-105 transition-transform duration-700"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
-                                </div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center gap-1 px-5 h-11 rounded-full bg-white text-primary text-[11px] font-semibold uppercase tracking-[0.16em] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500">
+                                        Shop Now <ArrowUpRight className="w-3.5 h-3.5" />
+                                    </span>
+                                </Link>
 
                                 {/* Text */}
                                 <div className="text-center lg:text-left px-4 sm:px-0">
@@ -117,6 +127,8 @@ export default function SkinCareSection({ variant = "home" }: SkinCareSectionPro
                         </div>
                     ))}
                 </div>
+
+                {variant === "home" && <ShopNowCta className="mt-16 sm:mt-20" />}
             </div>
         </section>
     )

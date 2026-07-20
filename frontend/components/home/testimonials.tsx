@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Star } from "lucide-react"
+import { ShopNowCta } from "@/components/home/shop-now-cta"
 
 interface Testimonial {
   id: string
@@ -115,6 +116,8 @@ export default function Testimonials() {
             />
           ))}
         </div>
+
+        <ShopNowCta variant="dark" className="mt-12" />
       </div>
     </section>
   )

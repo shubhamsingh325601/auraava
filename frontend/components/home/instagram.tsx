@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Instagram } from "lucide-react";
 import { BRAND } from "@/lib/site-config";
 import { Reveal } from "@/components/reveal";
+import { ShopNowCta } from "@/components/home/shop-now-cta";
 
 interface InstagramPost {
     id: string
@@ -101,6 +102,8 @@ export default function InstaGallerySection() {
                         </div>
                     </a>
                 </div>
+
+                <ShopNowCta className="mt-12" />
             </div>
         </section>
     );

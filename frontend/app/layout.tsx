@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
 import HairQuizModal from "@/components/home/hair-quiz-modal"
+import WhatsAppButton from "@/components/layout/whatsapp-button"
 
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://auraava.com'),
@@ -115,6 +116,7 @@ export default function RootLayout({
             <body className="overflow-x-hidden">
                 <CartProvider>{children}</CartProvider>
                 <HairQuizModal />
+                <WhatsAppButton />
             </body>
         </html>
     )

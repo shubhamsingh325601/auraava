@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { useInView } from "framer-motion"
+import { ShopNowCta } from "@/components/home/shop-now-cta"
 
 interface StatItem {
     id: string
@@ -84,6 +85,7 @@ export default function StatsSection() {
                     </div>
                 ))}
             </div>
+            <ShopNowCta className="container-x mt-12" />
         </section>
     )
 }

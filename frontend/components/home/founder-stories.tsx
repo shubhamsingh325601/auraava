@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Instagram, Linkedin, Quote } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { ShopNowCta } from "@/components/home/shop-now-cta";
 
 interface FounderStory {
     id: string
@@ -114,6 +115,8 @@ export default function FounderStoriesSection() {
                         </Reveal>
                     ))}
                 </div>
+
+                <ShopNowCta className="mt-16" />
             </div>
         </section>
     );
