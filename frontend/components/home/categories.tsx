@@ -8,25 +8,25 @@ const categories = [
         id: "oils",
         name: "Hair Oils",
         tagline: "Nourish & Strengthen",
-        image: "/images/cat-oils.jpg",
+        image: "/images/cat-oils.png",
     },
     {
         id: "shampoos",
         name: "Shampoos",
         tagline: "Cleanse & Revitalize",
-        image: "/images/cat-shampoo.jpg",
+        image: "/images/cat-shampoo.png",
     },
     {
         id: "serums",
         name: "Hair Serums",
         tagline: "Frizz-Free & Glossy",
-        image: "/images/cat-serum.jpg",
+        image: "/images/cat-serum.png",
     },
     {
         id: "sprays",
         name: "Hair Sprays",
         tagline: "Protect & Style",
-        image: "/images/cat-spray.jpg",
+        image: "/images/cat-spray.png",
     },
 ]
 

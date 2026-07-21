@@ -62,9 +62,9 @@ const PRODUCTS = [
 ]
 
 const OFFERS = [
-    { title: 'Hair Care Ritual Set', description: 'Oil + Shampoo + Serum at a beautiful bundled price.', discount: '20% OFF', image: img('cat-oils.jpg'), link: '/products', order: 0 },
-    { title: 'First Order Glow', description: 'Flat ₹150 off on your very first Auraava order.', discount: '₹150 OFF', image: img('cat-serum.jpg'), link: '/products', order: 1 },
-    { title: 'Free Shipping', description: 'Complimentary shipping on every order above ₹999.', discount: 'FREE', image: img('cat-shampoo.jpg'), link: '/products', order: 2 },
+    { title: 'Hair Care Ritual Set', description: 'Oil + Shampoo + Serum at a beautiful bundled price.', discount: '20% OFF', image: img('cat-oils.png'), link: '/products', order: 0 },
+    { title: 'First Order Glow', description: 'Flat ₹150 off on your very first Auraava order.', discount: '₹150 OFF', image: img('cat-serum.png'), link: '/products', order: 1 },
+    { title: 'Free Shipping', description: 'Complimentary shipping on every order above ₹999.', discount: 'FREE', image: img('cat-shampoo.png'), link: '/products', order: 2 },
 ]
 
 const TESTIMONIALS = [
@@ -82,16 +82,16 @@ const FAQS = [
 ]
 
 const HAIRCARE_ITEMS = [
-    { title: 'Start With Your Scalp', description: 'Healthy hair grows from a healthy scalp. Begin with a weekly warm-oil massage to wake up roots, calm tension and improve circulation.', image: img('cat-oils.jpg'), reverse: false, order: 0 },
-    { title: "Cleanse, Don't Strip", description: "Avoid harsh sulphates. Choose plant-based shampoos that gently lift impurities while preserving your hair's natural oils.", image: img('cat-shampoo.jpg'), reverse: true, order: 1 },
-    { title: 'Seal With a Serum', description: 'A few drops of lightweight serum on damp ends locks in hydration, controls frizz and adds the kind of shine you can see across the room.', image: img('cat-serum.jpg'), reverse: false, order: 2 },
+    { title: 'Start With Your Scalp', description: 'Healthy hair grows from a healthy scalp. Begin with a weekly warm-oil massage to wake up roots, calm tension and improve circulation.', image: img('cat-oils.png'), reverse: false, order: 0 },
+    { title: "Cleanse, Don't Strip", description: "Avoid harsh sulphates. Choose plant-based shampoos that gently lift impurities while preserving your hair's natural oils.", image: img('cat-shampoo.png'), reverse: true, order: 1 },
+    { title: 'Seal With a Serum', description: 'A few drops of lightweight serum on damp ends locks in hydration, controls frizz and adds the kind of shine you can see across the room.', image: img('cat-serum.png'), reverse: false, order: 2 },
 ]
 
 const INSTAGRAM_POSTS = [
-    { image: img('cat-oils.jpg'), order: 0 },
-    { image: img('cat-serum.jpg'), order: 1 },
-    { image: img('cat-shampoo.jpg'), order: 2 },
-    { image: img('cat-spray.jpg'), order: 3 },
+    { image: img('cat-oils.png'), order: 0 },
+    { image: img('cat-serum.png'), order: 1 },
+    { image: img('cat-shampoo.png'), order: 2 },
+    { image: img('cat-spray.png'), order: 3 },
     { image: img('prod-3.jpg'), order: 4 },
     { image: img('prod-1.jpg'), order: 5 },
 ]
@@ -175,22 +175,22 @@ const ABOUT_SECTIONS = [
     {
         title: 'Rooted in Tradition', subtitle: 'Our Story',
         content: "Auraava was born in a small kitchen in Delhi, where three generations of women gathered every Sunday to brew hair oils the way their grandmothers had — with cold-pressed sesame, sun-warmed amla, and slow-infused bhringraj. When we couldn't find products that respected these rituals, we decided to make them ourselves.",
-        image: img('cat-oils.jpg'), backgroundColor: '#FAF6F0', textColor: '#1C1008', layout: 'text-right' as const, order: 0,
+        image: img('cat-oils.png'), backgroundColor: '#FAF6F0', textColor: '#1C1008', layout: 'text-right' as const, order: 0,
     },
     {
         title: 'Ingredients With Integrity', subtitle: 'What We Believe',
         content: "Every ingredient in an Auraava bottle is traceable to its origin. We work directly with small-scale farmers across India — from Kerala's coconut groves to Rajasthan's rose fields — because provenance matters as much as purity. No parabens. No sulphates. No silicones. Ever.",
-        image: img('cat-shampoo.jpg'), backgroundColor: '#F2EAE0', textColor: '#1C1008', layout: 'text-left' as const, order: 1,
+        image: img('cat-shampoo.png'), backgroundColor: '#F2EAE0', textColor: '#1C1008', layout: 'text-left' as const, order: 1,
     },
     {
         title: 'Kind to Hair, Kinder to the Planet', subtitle: 'Our Promise',
         content: 'Our bottles are recyclable glass, our cartons FSC-certified, and our formulations are 100% cruelty-free. We believe luxury and responsibility should never be at odds — beauty done well is beauty done kindly.',
-        image: img('cat-serum.jpg'), backgroundColor: '#C8DDD0', textColor: '#1A3A2A', layout: 'text-right' as const, order: 2,
+        image: img('cat-serum.png'), backgroundColor: '#C8DDD0', textColor: '#1A3A2A', layout: 'text-right' as const, order: 2,
     },
     {
         title: 'A Ritual, Not a Routine', subtitle: 'The Auraava Way',
         content: "Hair care is not a chore to check off before bed. It's a quiet fifteen minutes of care that ripples through the rest of your week. Every Auraava product is designed to be slow, sensory and beautiful — because you deserve rituals that feel like you.",
-        image: img('cat-spray.jpg'), backgroundColor: '#F5EDE4', textColor: '#1C1008', layout: 'text-left' as const, order: 3,
+        image: img('cat-spray.png'), backgroundColor: '#F5EDE4', textColor: '#1C1008', layout: 'text-left' as const, order: 3,
     },
 ]
 
