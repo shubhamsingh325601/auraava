@@ -16,6 +16,7 @@ import {
     LogOut,
     ClipboardList,
     Settings2,
+    MessageSquare,
 } from "lucide-react"
 
 const NAV_ITEMS = [
@@ -27,7 +28,8 @@ const NAV_ITEMS = [
     { href: "/admin/faqs", label: "FAQs", icon: HelpCircle, match: "/admin/faqs" },
     { href: "/admin/hair-care", label: "Hair Care", icon: Sparkles, match: "/admin/hair-care" },
     { href: "/admin/instagram", label: "Instagram", icon: Instagram, match: "/admin/instagram" },
-    { href: "/admin/hair-quiz", label: "Hair Quiz", icon: ClipboardList, match: "/admin/hair-quiz" },
+    { href: "/admin/hair-quiz", label: "Hair Quiz", icon: ClipboardList, match: "/admin/hair-quiz", exclude: "/admin/hair-quiz/responses" },
+    { href: "/admin/hair-quiz/responses", label: "Quiz Responses", icon: MessageSquare, match: "/admin/hair-quiz/responses" },
     { href: "/admin/about-us", label: "About Us", icon: Users, match: "/admin/about-us" },
     { href: "/admin/stats", label: "Statistics", icon: BarChart3, match: "/admin/stats" },
     { href: "/admin/settings", label: "Settings", icon: Settings2, match: "/admin/settings" },
@@ -54,8 +56,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         }
     }
 
-    const isActive = (match: string) =>
-        match === "/admin" ? pathname === "/admin" : pathname?.startsWith(match)
+    const isActive = (match: string, exclude?: string) => {
+        if (match === "/admin") return pathname === "/admin"
+        if (exclude && pathname?.startsWith(exclude)) return false
+        return pathname?.startsWith(match)
+    }
 
     return (
         <div className="h-screen flex bg-ivory overflow-hidden">
@@ -69,7 +74,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </div>
                 <nav className="flex-1 px-3 space-y-1 overflow-y-auto">
                     {NAV_ITEMS.map((item) => {
-                        const active = isActive(item.match)
+                        const active = isActive(item.match, (item as { exclude?: string }).exclude)
                         return (
                             <Link
                                 key={item.href}

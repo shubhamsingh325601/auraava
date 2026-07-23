@@ -17,6 +17,7 @@ import {
     Heart,
     BarChart3,
     ClipboardList,
+    MessageSquare,
     Loader2
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -31,6 +32,7 @@ interface SectionCount {
     aboutUs: number | null
     founderStories: number | null
     orders: number | null
+    quizResponses: number | null
 }
 
 const SUMMARY_CARDS = [
@@ -43,6 +45,7 @@ const SUMMARY_CARDS = [
     { key: "instagram" as const, label: "Instagram Posts", icon: Instagram, href: "/admin/instagram", cta: "Manage Instagram" },
     { key: "aboutUs" as const, label: "About Us", icon: Users, href: "/admin/about-us", cta: "Manage About Us" },
     { key: "founderStories" as const, label: "Founder Stories", icon: Heart, href: "/admin/founder-stories", cta: "Manage Founder Stories" },
+    { key: "quizResponses" as const, label: "Quiz Responses", icon: MessageSquare, href: "/admin/hair-quiz/responses", cta: "View Responses" },
 ]
 
 export default function AdminDashboard() {
@@ -57,6 +60,7 @@ export default function AdminDashboard() {
         aboutUs: null,
         founderStories: null,
         orders: null,
+        quizResponses: null,
     })
     const [loading, setLoading] = useState(true)
 
@@ -66,7 +70,7 @@ export default function AdminDashboard() {
 
     const fetchAllCounts = async () => {
         try {
-            const [productsRes, offersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, founderStoriesRes, ordersRes] = await Promise.all([
+            const [productsRes, offersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, founderStoriesRes, ordersRes, quizResponsesRes] = await Promise.all([
                 fetch('/api/products'),
                 fetch('/api/offers'),
                 fetch('/api/testimonials'),
@@ -76,9 +80,10 @@ export default function AdminDashboard() {
                 fetch('/api/about-us'),
                 fetch('/api/founder-stories'),
                 fetch('/api/admin/orders', { credentials: 'include' }),
+                fetch('/api/hair-quiz/responses', { credentials: 'include' }),
             ])
 
-            const [productsData, offersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, founderStoriesData, ordersData] = await Promise.all([
+            const [productsData, offersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, founderStoriesData, ordersData, quizResponsesData] = await Promise.all([
                 productsRes.json(),
                 offersRes.json(),
                 testimonialsRes.json(),
@@ -88,6 +93,7 @@ export default function AdminDashboard() {
                 aboutUsRes.json(),
                 founderStoriesRes.json(),
                 ordersRes.ok ? ordersRes.json() : Promise.resolve({ orders: [] }),
+                quizResponsesRes.ok ? quizResponsesRes.json() : Promise.resolve({ responses: [] }),
             ])
 
             setCounts({
@@ -100,6 +106,7 @@ export default function AdminDashboard() {
                 aboutUs: (aboutUsData.sections || []).length,
                 founderStories: (founderStoriesData.stories || []).length,
                 orders: (ordersData.orders || []).length,
+                quizResponses: (quizResponsesData.responses || []).length,
             })
         } catch (error) {
             console.error('Failed to fetch data:', error)
