@@ -15,6 +15,7 @@ import {
     BarChart3,
     LogOut,
     ClipboardList,
+    Settings2,
 } from "lucide-react"
 
 const NAV_ITEMS = [
@@ -29,6 +30,7 @@ const NAV_ITEMS = [
     { href: "/admin/hair-quiz", label: "Hair Quiz", icon: ClipboardList, match: "/admin/hair-quiz" },
     { href: "/admin/about-us", label: "About Us", icon: Users, match: "/admin/about-us" },
     { href: "/admin/stats", label: "Statistics", icon: BarChart3, match: "/admin/stats" },
+    { href: "/admin/settings", label: "Settings", icon: Settings2, match: "/admin/settings" },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

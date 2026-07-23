@@ -9,7 +9,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import Newsletter from "@/components/layout/newsletter"
 import PageHero from "@/components/layout/page-hero"
-import { waLink } from "@/lib/site-config"
+import { useWaLink } from "@/lib/site-config-context"
 
 interface Product {
     id: string
@@ -145,6 +145,7 @@ function ProductsPageInner() {
 }
 
 function ListingCard({ product, index }: { product: Product; index: number }) {
+    const waLink = useWaLink()
     const rating = product.rating ?? 0
     const reviews = product.reviews ?? 0
     const categoryLabel = CATEGORY_LABELS[product.category] ?? product.category

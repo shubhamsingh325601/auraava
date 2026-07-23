@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
+import { SiteContactProvider } from "@/lib/site-config-context"
 import HairQuizModal from "@/components/home/hair-quiz-modal"
 import WhatsAppButton from "@/components/layout/whatsapp-button"
 
@@ -105,7 +106,7 @@ export default function RootLayout({
                             ],
                             "contactPoint": {
                                 "@type": "ContactPoint",
-                                "telephone": "+91-9718370125",
+                                "telephone": "+91-9818024742",
                                 "contactType": "customer service",
                                 "email": "customer@auraava.com"
                             }
@@ -114,9 +115,11 @@ export default function RootLayout({
                 />
             </head>
             <body className="overflow-x-hidden">
-                <CartProvider>{children}</CartProvider>
-                <HairQuizModal />
-                <WhatsAppButton />
+                <SiteContactProvider>
+                    <CartProvider>{children}</CartProvider>
+                    <HairQuizModal />
+                    <WhatsAppButton />
+                </SiteContactProvider>
             </body>
         </html>
     )

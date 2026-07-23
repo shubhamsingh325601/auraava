@@ -6,7 +6,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import Newsletter from "@/components/layout/newsletter"
 import PageHero from "@/components/layout/page-hero"
-import { BRAND, waLink } from "@/lib/site-config"
+import { useSiteContact, useWaLink } from "@/lib/site-config-context"
 
 interface FAQ {
     id: string
@@ -16,6 +16,8 @@ interface FAQ {
 }
 
 export default function FAQsPage() {
+    const { phone } = useSiteContact()
+    const waLink = useWaLink()
     const [faqs, setFaqs] = useState<FAQ[]>([])
     const [loading, setLoading] = useState(true)
     const [openId, setOpenId] = useState<string | null>(null)
@@ -144,7 +146,7 @@ export default function FAQsPage() {
                                 <MessageCircle className="w-4 h-4" />
                                 Chat on WhatsApp
                             </a>
-                            <p className="mt-4 text-xs opacity-70">{BRAND.phone}</p>
+                            <p className="mt-4 text-xs opacity-70">{phone}</p>
                         </div>
                     </div>
                 </section>

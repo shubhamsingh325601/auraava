@@ -377,10 +377,10 @@ export default function NewProductPage() {
                                 value={formData.whatsappPhoneNumber}
                                 onChange={(e) => setFormData({ ...formData, whatsappPhoneNumber: e.target.value })}
                                 className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                                placeholder="918971690503"
+                                placeholder="919818024742"
                             />
                             <p className="text-sm text-muted-foreground mt-1">
-                                Enter phone number in international format without + or spaces (e.g., 918971690503). If left empty, default will be used.
+                                Enter phone number in international format without + or spaces (e.g., 919818024742). If left empty, default will be used.
                             </p>
                         </div>
                         <div>

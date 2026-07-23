@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link"
 import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react"
-import { BRAND, waLink } from "@/lib/site-config"
+import { BRAND } from "@/lib/site-config"
+import { useSiteContact, useWaLink } from "@/lib/site-config-context"
 
 function XIcon({ className }: { className?: string }) {
     return (
@@ -34,6 +37,8 @@ const SOCIALS = [
 ]
 
 export default function Footer() {
+    const { phone } = useSiteContact()
+    const waLink = useWaLink()
     return (
         <footer className="bg-deep text-ivory relative">
             <div className="h-3 bg-gradient-to-b from-transparent to-deep" />
@@ -77,8 +82,8 @@ export default function Footer() {
                     <h4 className="eyebrow text-accent-blush">Contact</h4>
                     <ul className="mt-4 space-y-2 text-sm opacity-90">
                         <li>
-                            <a href={`tel:${BRAND.phone.replace(/\s/g, "")}`} className="hover:opacity-100">
-                                {BRAND.phone}
+                            <a href={`tel:${phone.replace(/\s/g, "")}`} className="hover:opacity-100">
+                                {phone}
                             </a>
                         </li>
                         {BRAND.emails.map((e) => (

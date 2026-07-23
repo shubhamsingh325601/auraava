@@ -1,8 +1,9 @@
 "use client"
 
-import { waLink } from "@/lib/site-config"
+import { useWaLink } from "@/lib/site-config-context"
 
 export default function WhatsAppButton() {
+    const waLink = useWaLink()
     return (
         <a
             href={waLink("Hi Auraava, I'd love to know more about your products.")}

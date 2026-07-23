@@ -11,7 +11,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { waLink } from "@/lib/site-config"
+import { useWaLink } from "@/lib/site-config-context"
 
 interface Product {
     id: string
@@ -48,6 +48,7 @@ export default function ProductCarousel({
     bgClassName = "bg-sage",
     excludeId,
 }: ProductCarouselProps) {
+    const waLink = useWaLink()
     const [products, setProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(true)
 

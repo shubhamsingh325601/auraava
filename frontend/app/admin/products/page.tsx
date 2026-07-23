@@ -52,7 +52,7 @@ export default function AdminProductsPage() {
     }
 
     const handleWhatsAppClick = (product: Product) => {
-        const phoneNumber = "918971690503"
+        const phoneNumber = "919818024742"
         const message = `Hi! I'm interested in ${product.name} - Rs. ${product.price}. Can you provide more details?`
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
         window.open(whatsappUrl, '_blank')

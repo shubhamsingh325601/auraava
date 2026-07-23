@@ -18,9 +18,12 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/', requireAdmin, async (req: Request, res: Response) => {
     try {
         const body = req.body
+        const current = await getSettings()
         const settings = {
-            whatsappPhoneNumber: body.whatsappPhoneNumber || '918971690503',
-            whatsappMessageTemplate: body.whatsappMessageTemplate || "Hi! I'm interested in {productName} - Rs. {price}. Can you provide more details?"
+            whatsappNumber: body.whatsappNumber ?? current.whatsappNumber,
+            contactPhone: body.contactPhone ?? current.contactPhone,
+            whatsappPhoneNumber: body.whatsappPhoneNumber ?? current.whatsappPhoneNumber,
+            whatsappMessageTemplate: body.whatsappMessageTemplate ?? current.whatsappMessageTemplate,
         }
         await saveSettings(settings)
         res.json(settings)

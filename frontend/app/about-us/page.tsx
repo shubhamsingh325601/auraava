@@ -8,7 +8,8 @@ import Header from "@/components/layout/header";
 import Newsletter from "@/components/layout/newsletter";
 import Image from "next/image";
 import { Mail, Phone, MessageCircle, Loader2 } from "lucide-react";
-import { BRAND, waLink } from "@/lib/site-config";
+import { BRAND } from "@/lib/site-config";
+import { useSiteContact, useWaLink } from "@/lib/site-config-context";
 import { Reveal } from "@/components/reveal";
 import PageHero from "@/components/layout/page-hero";
 
@@ -25,6 +26,8 @@ interface AboutUsSection {
 }
 
 export default function AboutUsPage() {
+    const { phone } = useSiteContact()
+    const waLink = useWaLink()
     const [sections, setSections] = useState<AboutUsSection[]>([])
     const [loading, setLoading] = useState(true)
 
@@ -132,9 +135,9 @@ export default function AboutUsPage() {
                         <ContactCard
                             icon={<Phone className="w-6 h-6" />}
                             label="Call us"
-                            primary={BRAND.phone}
+                            primary={phone}
                             secondary={BRAND.hours}
-                            href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
+                            href={`tel:${phone.replace(/\s/g, "")}`}
                             cta="Call now"
                         />
                         <ContactCard
@@ -148,7 +151,7 @@ export default function AboutUsPage() {
                         <ContactCard
                             icon={<MessageCircle className="w-6 h-6" />}
                             label="WhatsApp"
-                            primary={BRAND.phone}
+                            primary={phone}
                             secondary="Fastest way to reach us"
                             href={waLink("Hi Auraava, I'd like to know more.")}
                             cta="Chat now"

@@ -15,6 +15,7 @@ import {
     Check
 } from "lucide-react"
 import BuyNowButton from "./buy-now-button"
+import { useSiteContact } from "@/lib/site-config-context"
 
 // Helper function to format WhatsApp message
 const formatWhatsAppMessage = (template: string, productName: string, price: number): string => {
@@ -76,9 +77,10 @@ export default function ProductDetails({
     whatsappMessageTemplate,
     directCheckoutEnabled,
 }: ProductDetailsProps) {
+    const { whatsappNumber } = useSiteContact()
     const handleWhatsAppClick = () => {
-        // Use product-specific settings or fallback to defaults
-        const phoneNumber = whatsappPhoneNumber || "919598028672"
+        // Use product-specific settings or fallback to the site-wide default
+        const phoneNumber = whatsappPhoneNumber || whatsappNumber
         const template = whatsappMessageTemplate || "Hi! I'm interested in {productName} - Rs. {price}. Can you provide more details?"
         const message = formatWhatsAppMessage(template, name, price)
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`

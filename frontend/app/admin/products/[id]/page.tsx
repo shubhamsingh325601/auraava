@@ -413,7 +413,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                                 value={formData.whatsappPhoneNumber}
                                 onChange={(e) => setFormData({ ...formData, whatsappPhoneNumber: e.target.value })}
                                 className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                                placeholder="918971690503"
+                                placeholder="919818024742"
                             />
                             <p className="text-sm text-muted-foreground mt-1">
                                 Enter phone number in international format without + or spaces (e.g., 919876543212). If left empty, default will be used.

@@ -4,7 +4,8 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { Menu, Search, X } from "lucide-react"
-import { BRAND, waLink } from "@/lib/site-config"
+import { BRAND } from "@/lib/site-config"
+import { useWaLink } from "@/lib/site-config-context"
 import Logo from "./logo"
 
 const navLinks = [
@@ -21,6 +22,7 @@ const TICKER = "✦ Free shipping on orders above ₹999    ✦ 100% Natural & C
 export default function MainNavigation() {
     const pathname = usePathname()
     const isHome = pathname === "/"
+    const waLink = useWaLink()
 
     const [isOpen, setIsOpen] = useState(false)
     const [showNav, setShowNav] = useState(true)

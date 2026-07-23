@@ -1,7 +1,7 @@
 export const BRAND = {
     name: "Auraava",
-    phone: "+91 9718370125",
-    whatsappNumber: "919598028672",
+    phone: "+91 9818024742",
+    whatsappNumber: "919818024742",
     emails: ["customer@auraava.com", "auraavacare@gmail.com"],
     hours: "Mon - Sat | 10:00 AM - 7:00 PM (IST)",
     socials: {
