@@ -82,7 +82,7 @@ export default function AdminSettingsPage() {
                                     required
                                 />
                                 <p className="mt-1.5 text-xs text-muted-foreground">
-                                    Used by the floating WhatsApp button, footer, navigation and product "Chat on WhatsApp" links.
+                                    Used by the floating WhatsApp button, footer, navigation and product &quot;Chat on WhatsApp&quot; links.
                                     International format, no + or spaces (e.g. 919818024742).
                                 </p>
                             </div>
@@ -100,7 +100,7 @@ export default function AdminSettingsPage() {
                                     required
                                 />
                                 <p className="mt-1.5 text-xs text-muted-foreground">
-                                    Shown as the readable contact number in the footer, About Us and FAQs pages, and used for "Call now" links.
+                                    Shown as the readable contact number in the footer, About Us and FAQs pages, and used for &quot;Call now&quot; links.
                                 </p>
                             </div>
 
