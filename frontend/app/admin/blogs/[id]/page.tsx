@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -30,7 +32,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
 
     const fetchBlog = async () => {
         try {
-            const res = await fetch(`/api/blogs/${params.id}`)
+            const res = await adminFetch(`/api/blogs/${params.id}`)
             const data = await res.json()
             if (data.blog) {
                 setFormData({
@@ -79,7 +81,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
         setSaving(true)
 
         try {
-            const res = await fetch(`/api/blogs/${params.id}`, {
+            const res = await adminFetch(`/api/blogs/${params.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

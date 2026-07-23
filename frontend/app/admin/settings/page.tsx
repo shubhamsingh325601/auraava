@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { Loader2, Settings2, Save } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,7 +20,7 @@ export default function AdminSettingsPage() {
 
     const fetchSettings = async () => {
         try {
-            const res = await fetch('/api/settings')
+            const res = await adminFetch('/api/settings')
             const data = await res.json()
             setWhatsappNumber(data.whatsappNumber || "")
             setContactPhone(data.contactPhone || "")
@@ -33,7 +35,7 @@ export default function AdminSettingsPage() {
         e.preventDefault()
         setSaving(true)
         try {
-            const res = await fetch('/api/settings', {
+            const res = await adminFetch('/api/settings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ whatsappNumber, contactPhone }),

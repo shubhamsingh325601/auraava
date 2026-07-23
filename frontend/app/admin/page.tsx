@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -71,16 +73,16 @@ export default function AdminDashboard() {
     const fetchAllCounts = async () => {
         try {
             const [productsRes, offersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, founderStoriesRes, ordersRes, quizResponsesRes] = await Promise.all([
-                fetch('/api/products'),
-                fetch('/api/offers'),
-                fetch('/api/testimonials'),
-                fetch('/api/faqs'),
-                fetch('/api/hair-care'),
-                fetch('/api/instagram'),
-                fetch('/api/about-us'),
-                fetch('/api/founder-stories'),
-                fetch('/api/admin/orders', { credentials: 'include' }),
-                fetch('/api/hair-quiz/responses', { credentials: 'include' }),
+                adminFetch('/api/products'),
+                adminFetch('/api/offers'),
+                adminFetch('/api/testimonials'),
+                adminFetch('/api/faqs'),
+                adminFetch('/api/hair-care'),
+                adminFetch('/api/instagram'),
+                adminFetch('/api/about-us'),
+                adminFetch('/api/founder-stories'),
+                adminFetch('/api/admin/orders', { credentials: 'include' }),
+                adminFetch('/api/hair-quiz/responses', { credentials: 'include' }),
             ])
 
             const [productsData, offersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, founderStoriesData, ordersData, quizResponsesData] = await Promise.all([
@@ -117,7 +119,7 @@ export default function AdminDashboard() {
 
     const handleLogout = async () => {
         try {
-            await fetch('/api/auth/logout', {
+            await adminFetch('/api/auth/logout', {
                 method: 'POST',
                 credentials: 'include',
             })

@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -89,7 +91,7 @@ export default function NewProductPage() {
                     .map(b => ({ label: b.label.trim(), icon: b.icon || benefitIconOptions[0].value })),
             }
 
-            const res = await fetch('/api/products', {
+            const res = await adminFetch('/api/products', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(productData),

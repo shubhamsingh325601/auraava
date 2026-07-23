@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useEffect, useState, useCallback } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -34,7 +36,7 @@ export default function AdminOrdersPage() {
             if (statusFilter) params.set("status", statusFilter)
             if (search.trim()) params.set("search", search.trim())
 
-            const res = await fetch(`/api/admin/orders?${params.toString()}`, { credentials: "include" })
+            const res = await adminFetch(`/api/admin/orders?${params.toString()}`, { credentials: "include" })
             const data = await res.json().catch(() => null)
             if (!res.ok) {
                 setError(data?.error ?? "Failed to load orders")

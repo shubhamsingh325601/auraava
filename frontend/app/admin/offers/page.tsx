@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -35,7 +37,7 @@ export default function ManageOffersPage() {
 
     const fetchOffersData = async () => {
         try {
-            const res = await fetch('/api/offers')
+            const res = await adminFetch('/api/offers')
             const data = await res.json()
             if (data.sectionTitle) setSectionTitle(data.sectionTitle)
             if (data.sectionSubtitle) setSectionSubtitle(data.sectionSubtitle)
@@ -92,7 +94,7 @@ export default function ManageOffersPage() {
 
         try {
             // First, update section metadata
-            const metadataRes = await fetch('/api/offers', {
+            const metadataRes = await adminFetch('/api/offers', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -113,7 +115,7 @@ export default function ManageOffersPage() {
                 
                 if (isNew) {
                     // Create new offer item
-                    const res = await fetch('/api/offers', {
+                    const res = await adminFetch('/api/offers', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -135,7 +137,7 @@ export default function ManageOffersPage() {
                     }
                 } else {
                     // Update existing offer item using PUT
-                    const res = await fetch(`/api/offers/${offer.id}`, {
+                    const res = await adminFetch(`/api/offers/${offer.id}`, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -259,7 +261,7 @@ export default function ManageOffersPage() {
                                                 if (!confirm('Are you sure you want to delete this offer?')) return
                                                 
                                                 try {
-                                                    const res = await fetch(`/api/offers/${offer.id}`, {
+                                                    const res = await adminFetch(`/api/offers/${offer.id}`, {
                                                         method: 'DELETE'
                                                     })
                                                     

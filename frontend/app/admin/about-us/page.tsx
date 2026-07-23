@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -34,7 +36,7 @@ export default function ManageAboutUsPage() {
 
     const fetchAboutUsData = async () => {
         try {
-            const res = await fetch('/api/about-us')
+            const res = await adminFetch('/api/about-us')
             const data = await res.json()
             if (data.sections) {
                 setSections(data.sections)
@@ -91,7 +93,7 @@ export default function ManageAboutUsPage() {
         if (!confirm('Are you sure you want to delete this section?')) return
 
         try {
-            const res = await fetch(`/api/about-us/${id}`, {
+            const res = await adminFetch(`/api/about-us/${id}`, {
                 method: 'DELETE'
             })
 
@@ -117,7 +119,7 @@ export default function ManageAboutUsPage() {
                 
                 if (isNew) {
                     // New section - add it
-                    const res = await fetch('/api/about-us', {
+                    const res = await adminFetch('/api/about-us', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -141,7 +143,7 @@ export default function ManageAboutUsPage() {
                     }
                 } else {
                     // Existing section - update it
-                    const res = await fetch('/api/about-us', {
+                    const res = await adminFetch('/api/about-us', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({

@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -25,7 +27,7 @@ export default function EditInstagramPage({ params }: { params: { id: string } }
 
     const fetchInstagramPost = async () => {
         try {
-            const res = await fetch(`/api/instagram/${params.id}`)
+            const res = await adminFetch(`/api/instagram/${params.id}`)
             const data = await res.json()
             if (data.post) {
                 setFormData({
@@ -69,7 +71,7 @@ export default function EditInstagramPage({ params }: { params: { id: string } }
         setSaving(true)
 
         try {
-            const res = await fetch(`/api/instagram/${params.id}`, {
+            const res = await adminFetch(`/api/instagram/${params.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

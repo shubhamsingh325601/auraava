@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -27,7 +29,7 @@ export default function AdminHairQuizPage() {
 
     const fetchQuiz = async () => {
         try {
-            const res = await fetch('/api/hair-quiz')
+            const res = await adminFetch('/api/hair-quiz')
             const data = await res.json()
             setQuestions(data.questions || [])
             setTitle(data.title || "")
@@ -42,7 +44,7 @@ export default function AdminHairQuizPage() {
     const handleSaveSection = async () => {
         setSavingSection(true)
         try {
-            const res = await fetch('/api/hair-quiz', {
+            const res = await adminFetch('/api/hair-quiz', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ title, subtitle }),
@@ -62,7 +64,7 @@ export default function AdminHairQuizPage() {
         if (!confirm('Are you sure you want to delete this question?')) return
 
         try {
-            const res = await fetch(`/api/hair-quiz/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/hair-quiz/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setQuestions(prev => prev.filter(q => q.id !== id))
             } else {

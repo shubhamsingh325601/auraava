@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -26,7 +28,7 @@ export default function ManageStatsPage() {
 
     const fetchStatsData = async () => {
         try {
-            const res = await fetch('/api/stats')
+            const res = await adminFetch('/api/stats')
             const data = await res.json()
             if (data.items) {
                 // Ensure we have at least 2 items, max 4
@@ -101,7 +103,7 @@ export default function ManageStatsPage() {
                 return
             }
 
-            const res = await fetch('/api/stats', {
+            const res = await adminFetch('/api/stats', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ items: validStats }),

@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -24,7 +26,7 @@ export default function AdminTestimonialsPage() {
 
     const fetchTestimonials = async () => {
         try {
-            const res = await fetch('/api/testimonials')
+            const res = await adminFetch('/api/testimonials')
             const data = await res.json()
             setTestimonials(data.testimonials || [])
         } catch (error) {
@@ -38,7 +40,7 @@ export default function AdminTestimonialsPage() {
         if (!confirm('Are you sure you want to delete this testimonial?')) return
 
         try {
-            const res = await fetch(`/api/testimonials/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/testimonials/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setTestimonials(prev => prev.filter(t => t.id !== id))
             } else {

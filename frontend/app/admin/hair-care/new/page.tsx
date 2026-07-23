@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -48,7 +50,7 @@ export default function NewHairCarePage() {
         setLoading(true)
 
         try {
-            const res = await fetch('/api/hair-care', {
+            const res = await adminFetch('/api/hair-care', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

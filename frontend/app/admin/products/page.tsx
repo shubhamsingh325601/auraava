@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -25,7 +27,7 @@ export default function AdminProductsPage() {
 
     const fetchProducts = async () => {
         try {
-            const res = await fetch('/api/products')
+            const res = await adminFetch('/api/products')
             const data = await res.json()
             setProducts(data.products || [])
         } catch (error) {
@@ -39,7 +41,7 @@ export default function AdminProductsPage() {
         if (!confirm('Are you sure you want to delete this product?')) return
 
         try {
-            const res = await fetch(`/api/products/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/products/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setProducts(prev => prev.filter(p => p.id !== id))
             } else {

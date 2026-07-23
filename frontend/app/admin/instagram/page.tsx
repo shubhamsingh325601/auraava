@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -23,7 +25,7 @@ export default function AdminInstagramPage() {
 
     const fetchPosts = async () => {
         try {
-            const res = await fetch('/api/instagram')
+            const res = await adminFetch('/api/instagram')
             const data = await res.json()
             setPosts(data.posts || [])
         } catch (error) {
@@ -37,7 +39,7 @@ export default function AdminInstagramPage() {
         if (!confirm('Are you sure you want to delete this Instagram post?')) return
 
         try {
-            const res = await fetch(`/api/instagram/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/instagram/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setPosts(prev => prev.filter(p => p.id !== id))
             } else {

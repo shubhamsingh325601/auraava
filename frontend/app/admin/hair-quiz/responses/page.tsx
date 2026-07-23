@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import ProtectedRoute from "@/components/auth/protected-route"
 import { AdminPageHeader } from "@/components/admin/page-header"
@@ -31,7 +33,7 @@ export default function AdminHairQuizResponsesPage() {
 
     const fetchResponses = async () => {
         try {
-            const res = await fetch('/api/hair-quiz/responses')
+            const res = await adminFetch('/api/hair-quiz/responses')
             const data = await res.json()
             setResponses(data.responses || [])
         } catch (error) {
@@ -45,7 +47,7 @@ export default function AdminHairQuizResponsesPage() {
         if (!confirm('Are you sure you want to delete this response?')) return
 
         try {
-            const res = await fetch(`/api/hair-quiz/responses/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/hair-quiz/responses/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setResponses(prev => prev.filter(r => r.id !== id))
             } else {

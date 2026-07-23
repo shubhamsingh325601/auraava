@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -26,7 +28,7 @@ export default function AdminFounderStoriesPage() {
 
     const fetchStories = async () => {
         try {
-            const res = await fetch('/api/founder-stories')
+            const res = await adminFetch('/api/founder-stories')
             const data = await res.json()
             setStories(data.stories || [])
         } catch (error) {
@@ -40,7 +42,7 @@ export default function AdminFounderStoriesPage() {
         if (!confirm('Are you sure you want to delete this founder story?')) return
 
         try {
-            const res = await fetch(`/api/founder-stories/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/founder-stories/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setStories(prev => prev.filter(s => s.id !== id))
             } else {

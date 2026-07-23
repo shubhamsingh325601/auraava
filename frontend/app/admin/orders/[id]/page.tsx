@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useEffect, useState, useCallback } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -45,7 +47,7 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
         setLoading(true)
         setError(null)
         try {
-            const res = await fetch(`/api/admin/orders/${params.id}`, { credentials: "include" })
+            const res = await adminFetch(`/api/admin/orders/${params.id}`, { credentials: "include" })
             const data = await res.json().catch(() => null)
             if (!res.ok || !data?.order) {
                 setError(data?.error ?? "Order not found")
@@ -68,7 +70,7 @@ export default function AdminOrderDetailPage({ params }: { params: { id: string 
         setUpdating(true)
         setUpdateError(null)
         try {
-            const res = await fetch(`/api/admin/orders/${order.id}/status`, {
+            const res = await adminFetch(`/api/admin/orders/${order.id}/status`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

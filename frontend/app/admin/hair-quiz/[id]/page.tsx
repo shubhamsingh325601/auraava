@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -24,7 +26,7 @@ export default function EditHairQuizQuestionPage({ params }: { params: { id: str
 
     const fetchQuestion = async () => {
         try {
-            const res = await fetch(`/api/hair-quiz/${params.id}`)
+            const res = await adminFetch(`/api/hair-quiz/${params.id}`)
             const data = await res.json()
             if (data.question) {
                 setFormData({
@@ -46,7 +48,7 @@ export default function EditHairQuizQuestionPage({ params }: { params: { id: str
 
         try {
             const options = formData.options.map(o => o.trim()).filter(Boolean)
-            const res = await fetch(`/api/hair-quiz/${params.id}`, {
+            const res = await adminFetch(`/api/hair-quiz/${params.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, options }),

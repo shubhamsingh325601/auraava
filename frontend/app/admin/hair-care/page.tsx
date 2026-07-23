@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -23,7 +25,7 @@ export default function AdminHairCarePage() {
 
     const fetchItems = async () => {
         try {
-            const res = await fetch('/api/hair-care')
+            const res = await adminFetch('/api/hair-care')
             const data = await res.json()
             setItems(data.items || [])
         } catch (error) {
@@ -37,7 +39,7 @@ export default function AdminHairCarePage() {
         if (!confirm('Are you sure you want to delete this hair care tip?')) return
 
         try {
-            const res = await fetch(`/api/hair-care/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/hair-care/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setItems(prev => prev.filter(i => i.id !== id))
             } else {

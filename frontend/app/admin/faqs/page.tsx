@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProtectedRoute from "@/components/auth/protected-route"
@@ -24,7 +26,7 @@ export default function AdminFAQsPage() {
 
     const fetchFaqs = async () => {
         try {
-            const res = await fetch('/api/faqs')
+            const res = await adminFetch('/api/faqs')
             const data = await res.json()
             setFaqs(data.faqs || [])
         } catch (error) {
@@ -38,7 +40,7 @@ export default function AdminFAQsPage() {
         if (!confirm('Are you sure you want to delete this FAQ?')) return
 
         try {
-            const res = await fetch(`/api/faqs/${id}`, { method: 'DELETE' })
+            const res = await adminFetch(`/api/faqs/${id}`, { method: 'DELETE' })
             if (res.ok) {
                 setFaqs(prev => prev.filter(f => f.id !== id))
             } else {

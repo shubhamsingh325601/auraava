@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -22,7 +24,7 @@ export default function NewHairQuizQuestionPage() {
 
         try {
             const options = formData.options.map(o => o.trim()).filter(Boolean)
-            const res = await fetch('/api/hair-quiz', {
+            const res = await adminFetch('/api/hair-quiz', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, options }),

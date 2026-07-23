@@ -1,5 +1,7 @@
 "use client"
 
+import { adminFetch } from "@/lib/admin-fetch"
+
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -51,7 +53,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
 
     const fetchProduct = async () => {
         try {
-            const res = await fetch(`/api/products/${params.id}`)
+            const res = await adminFetch(`/api/products/${params.id}`)
             const data = await res.json()
             if (data.product) {
                 setFormData({
@@ -128,7 +130,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                     .map(b => ({ label: b.label.trim(), icon: b.icon || benefitIconOptions[0].value })),
             }
 
-            const res = await fetch(`/api/products/${params.id}`, {
+            const res = await adminFetch(`/api/products/${params.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(productData),
