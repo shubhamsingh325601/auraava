@@ -11,6 +11,7 @@ import ProductGallery from "@/components/product/product-gallery"
 import ProductDetails from "@/components/product/product-details"
 import ProductDescription from "@/components/product/product-description"
 import Productcarousael from '@/components/home/product-carousel'
+import ProductTestimonials from '@/components/product/product-testimonials'
 
 interface Product {
     id: string
@@ -137,6 +138,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     </div>
                 </section>
             </main>
+
+            <ProductTestimonials />
 
             <Productcarousael
                 eyebrowText="More to love"
