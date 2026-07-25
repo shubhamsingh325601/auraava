@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react"
 import { BRAND } from "@/lib/site-config"
 import { useSiteContact, useWaLink } from "@/lib/site-config-context"
+import Logo from "./logo"
 
 function XIcon({ className }: { className?: string }) {
     return (
@@ -53,9 +54,7 @@ export default function Footer() {
 
             <div className="container-x py-16 grid gap-12 md:grid-cols-12">
                 <div className="md:col-span-4">
-                    <div className="font-display font-bold text-3xl tracking-tight flex items-center gap-2">
-                        <span className="text-accent-gold">✦</span> AURAAVA
-                    </div>
+                    <Logo tone="light" />
                     <p className="mt-4 text-sm opacity-80 max-w-xs font-display italic text-lg">
                         Pure nature. Real results.
                     </p>
