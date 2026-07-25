@@ -10,7 +10,9 @@ export default function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
                 width={120}
                 height={60}
                 priority
-                className="object-contain w-20 sm:w-24 md:w-28 h-auto"
+                className={`object-contain w-20 sm:w-24 md:w-28 h-auto ${
+                    tone === "light" ? "brightness-0 invert" : ""
+                }`}
             />
         </Link>
     )
