@@ -16,7 +16,7 @@ interface PageHeroProps {
 export default function PageHero({ eyebrow, title, description, breadcrumb }: PageHeroProps) {
     return (
         <section className="relative grain bg-deep text-ivory overflow-hidden" style={{ minHeight: 260 }}>
-            <div className="container-x relative py-16 md:py-20 flex flex-col items-center text-center">
+            <div className="container-x relative pt-24 md:pt-28 pb-16 md:pb-20 flex flex-col items-center text-center">
                 <p className="eyebrow text-accent-blush">{eyebrow}</p>
                 <h1 className="mt-3 font-display text-4xl sm:text-5xl md:text-6xl font-bold text-ivory">
                     {title}
