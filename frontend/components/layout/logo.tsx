@@ -6,7 +6,7 @@ export default function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
         <Link href="/" className="inline-flex items-center shrink-0">
             <div className="relative">
                 {tone === "light" && (
-                    <div className="absolute -inset-3 rounded-xl bg-gradient-to-br from-white/25 to-white/5" />
+                    <div className="absolute -inset-3 rounded-2xl bg-gradient-to-r from-white/95 via-white/70 to-white/20" />
                 )}
                 <Image
                     src="/bgimage/logo1.png"
