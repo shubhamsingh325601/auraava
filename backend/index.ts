@@ -37,6 +37,8 @@ app.use(cors({
         const allowed = [
             'http://localhost:3000',
             'http://localhost:5000',
+            'https://auraava.com',
+            'https://www.auraava.com',
             process.env.FRONTEND_URL,
         ].filter(Boolean)
         if (!origin || allowed.includes(origin) || origin.endsWith('.vercel.app')) {

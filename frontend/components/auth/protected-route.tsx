@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://auraava-api.onrender.com'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.auraava.com'
 
 interface ProtectedRouteProps {
     children: React.ReactNode

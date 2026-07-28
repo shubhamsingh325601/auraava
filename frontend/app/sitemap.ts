@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://auraava.com'
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.auraava.com'
     const currentDate = new Date().toISOString()
 
     // Static pages

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://auraava-api.onrender.com'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.auraava.com'
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl

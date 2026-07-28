@@ -1,4 +1,4 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://auraava-api.onrender.com'
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.auraava.com'
 
 export async function api(path: string, options?: RequestInit) {
     const url = `${API_BASE}${path}`

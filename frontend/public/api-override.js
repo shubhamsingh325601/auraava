@@ -1,4 +1,4 @@
-const API_BASE = 'https://auraava-api.onrender.com'
+const API_BASE = 'https://api.auraava.com'
 const origFetch = window.fetch.bind(window)
 window.fetch = function(i, o) {
     if (typeof i === 'string' && i.startsWith('/api/')) i = API_BASE + i
