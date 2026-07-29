@@ -1,3 +1,10 @@
+if (process.env.NODE_ENV === 'development') {
+    try {
+        const { setupDevPlatform } = require('@cloudflare/next-on-pages/next-dev');
+        setupDevPlatform();
+    } catch { }
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
