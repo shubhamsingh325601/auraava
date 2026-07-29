@@ -53,6 +53,7 @@ export default function MainNavigation() {
     const transparent = isHome && !pastHero
 
     return (
+        <>
         <nav
             className={`fixed w-full z-50 top-0 transition-transform duration-500 ${
                 showNav ? "translate-y-0" : "-translate-y-full"
@@ -116,6 +117,7 @@ export default function MainNavigation() {
                     </div>
                 </div>
             </div>
+        </nav>
 
             {/* Mobile drawer */}
             <div
@@ -163,6 +165,6 @@ export default function MainNavigation() {
                     <p className="mt-8 text-xs opacity-70">{BRAND.hours}</p>
                 </aside>
             </div>
-        </nav>
+        </>
     )
 }

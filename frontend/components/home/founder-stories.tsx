@@ -66,7 +66,7 @@ export default function FounderStoriesSection() {
                                         alt={founder.name}
                                         fill
                                         sizes="(min-width: 768px) 288px, 224px"
-                                        className="object-cover"
+                                        className="object-cover object-[50%_20%]"
                                     />
                                 </div>
                                 <div className="mt-5 text-center">
