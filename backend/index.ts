@@ -39,6 +39,7 @@ app.use(cors({
             'http://localhost:5000',
             'https://auraava.com',
             'https://www.auraava.com',
+            'https://auraava.pages.dev',
             process.env.FRONTEND_URL,
         ].filter(Boolean)
         if (!origin || allowed.includes(origin) || origin.endsWith('.vercel.app')) {
