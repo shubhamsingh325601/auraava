@@ -24,6 +24,7 @@ const SHOP = [
 
 const COMPANY = [
     { label: "About Us", href: "/about-us" },
+    { label: "Our Story", href: "/our-story" },
     { label: "Journal", href: "/blog" },
     { label: "Hair & Care", href: "/hair-care-tips" },
     { label: "FAQs", href: "/faqs" },

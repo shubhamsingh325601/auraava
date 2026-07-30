@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import InstaGallerySection from "@/components/home/instagram";
-import FounderStoriesSection from "@/components/home/founder-stories";
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import Newsletter from "@/components/layout/newsletter";
@@ -69,9 +67,9 @@ export default function AboutUsPage() {
             <Header />
 
             <PageHero
-                eyebrow="Our Story"
-                title="Our Story"
-                description="Born from nature. Built for you."
+                eyebrow="About Us"
+                title="About Auraava"
+                description="Pure nature. Real results."
                 breadcrumb={[{ label: "About Us" }]}
             />
 
@@ -117,10 +115,6 @@ export default function AboutUsPage() {
                     </div>
                 </section>
             ))}
-
-            <FounderStoriesSection />
-
-            <InstaGallerySection />
 
             {/* Contact */}
             <section className="section-pad bg-cream">

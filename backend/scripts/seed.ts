@@ -97,9 +97,9 @@ const INSTAGRAM_POSTS = [
 ]
 
 const STATS_ITEMS = [
-    { label: 'Happy Customers', number: '10K+', order: 0 },
-    { label: 'Average Rating', number: '4.9★', order: 1 },
-    { label: 'Natural Products', number: '50+', order: 2 },
+    { label: 'Happy Customers', number: '5K', order: 0 },
+    { label: 'Average Rating', number: '4.9', order: 1 },
+    { label: 'Pan India Delivery', number: '100%', order: 2 },
     { label: 'Years of Care', number: '5+', order: 3 },
 ]
 

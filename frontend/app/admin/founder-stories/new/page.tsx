@@ -95,7 +95,7 @@ export default function NewFounderStoryPage() {
                                 value={formData.role}
                                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                                 className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                                placeholder="e.g., Founder & CEO"
+                                placeholder="e.g., Founder"
                             />
                         </div>
                     </div>

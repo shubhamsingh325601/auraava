@@ -3,14 +3,14 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { Menu, Search, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { BRAND } from "@/lib/site-config"
-import { useWaLink } from "@/lib/site-config-context"
 import Logo from "./logo"
 
 const navLinks = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about-us" },
+    { label: "Our Story", href: "/our-story" },
     { label: "Products", href: "/products" },
     { label: "Hair & Care", href: "/hair-care-tips" },
     { label: "Blog", href: "/blog" },
@@ -22,7 +22,6 @@ const TICKER = "✦ Free shipping on orders above ₹999    ✦ 100% Natural & C
 export default function MainNavigation() {
     const pathname = usePathname()
     const isHome = pathname === "/"
-    const waLink = useWaLink()
 
     const [isOpen, setIsOpen] = useState(false)
     const [showNav, setShowNav] = useState(true)
@@ -94,22 +93,10 @@ export default function MainNavigation() {
                         ))}
                     </ul>
 
-                    <div className="flex items-center gap-2 md:gap-3">
-                        <button aria-label="Search" className="hidden md:grid place-items-center w-10 h-10 rounded-full hover:bg-white/10 transition">
-                            <Search className="w-4 h-4 text-white" />
-                        </button>
-                        <a
-                            href={waLink("Hi Auraava, I'd like to learn more about your products.")}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hidden sm:inline-flex items-center gap-2 px-4 h-11 rounded-full bg-whatsapp text-white text-[11px] font-semibold uppercase tracking-[0.16em] hover:brightness-110 transition"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                            WhatsApp
-                        </a>
+                    <div className="flex items-center gap-2">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="lg:hidden grid place-items-center min-w-[44px] min-h-[44px] rounded-full hover:bg-white/10 text-white"
+                            className="lg:hidden grid place-items-center min-w-[44px] min-h-[44px] rounded-full text-white"
                             aria-label="Toggle menu"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -154,15 +141,7 @@ export default function MainNavigation() {
                             </Link>
                         ))}
                     </nav>
-                    <a
-                        href={waLink("Hi Auraava!")}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-10 inline-flex items-center justify-center w-full h-12 rounded-full bg-ivory text-primary text-[12px] font-semibold uppercase tracking-[0.16em]"
-                    >
-                        Enquire on WhatsApp
-                    </a>
-                    <p className="mt-8 text-xs opacity-70">{BRAND.hours}</p>
+                    <p className="mt-10 text-xs opacity-70">{BRAND.hours}</p>
                 </aside>
             </div>
         </>

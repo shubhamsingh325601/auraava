@@ -43,7 +43,7 @@ export default function HeroCarousel() {
                             src={slides[currentSlide].image}
                             alt="Auraava — Loved by your hair, nature and forever"
                             fill
-                            className="object-cover"
+                            className="object-cover object-top md:object-center"
                             priority={currentSlide === 0}
                             loading={currentSlide === 0 ? "eager" : "lazy"}
                         />
