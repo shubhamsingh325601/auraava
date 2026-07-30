@@ -76,7 +76,7 @@ export default function MainNavigation() {
                     transparent ? "bg-transparent" : "bg-deep"
                 } ${scrolled && !transparent ? "shadow-[0_1px_0_rgba(0,0,0,0.2)]" : ""}`}
             >
-                <div className="container-x flex items-center justify-between py-4 md:py-5">
+                <div className="container-x flex items-center justify-between py-4 md:py-5 max-md:px-3">
                     <Logo tone="light" />
 
                     <ul className="hidden lg:flex items-center gap-8">
