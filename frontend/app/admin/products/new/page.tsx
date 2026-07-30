@@ -29,6 +29,7 @@ export default function NewProductPage() {
     const [formData, setFormData] = useState({
         name: "",
         category: "shampoos",
+        subCategory: "",
         shortDescription: "",
         fullDescription: "",
         price: "",
@@ -142,6 +143,21 @@ export default function NewProductPage() {
                             <option value="serums">Serums</option>
                             <option value="oils">Oils</option>
                             <option value="sprays">Sprays</option>
+                        </select>
+                    </div>
+
+                    {/* Sub-Category (for oils) */}
+                    <div>
+                        <label className="block text-xs uppercase tracking-wider font-semibold text-primary mb-2">Sub-Category</label>
+                        <select
+                            value={formData.subCategory}
+                            onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                            className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        >
+                            <option value="">None</option>
+                            <option value="growth-oil">Hair Growth Oil</option>
+                            <option value="nourishing-oil">Nourishing Oil</option>
+                            <option value="anti-dandruff-oil">Anti-Dandruff Oil</option>
                         </select>
                     </div>
 

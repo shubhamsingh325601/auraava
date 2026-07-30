@@ -4,6 +4,7 @@ export interface IProduct extends Document {
     id: string
     name: string
     category: string
+    subCategory: string
     shortDescription: string
     fullDescription: string
     price: number
@@ -27,6 +28,7 @@ export interface IProduct extends Document {
 const ProductSchema = new Schema<IProduct>({
     name: { type: String, required: true },
     category: { type: String, required: true },
+    subCategory: { type: String, default: '' },
     shortDescription: { type: String, required: true },
     fullDescription: { type: String, required: true },
     price: { type: Number, required: true },

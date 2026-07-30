@@ -28,7 +28,7 @@ export default function HeroCarousel() {
         <section className="relative w-full overflow-hidden bg-deep text-primary-foreground">
             <Link
                 href={slides[currentSlide].href}
-                className="relative block w-full aspect-[16/9] sm:aspect-[16/7]"
+                className="relative block w-full aspect-[16/9] sm:aspect-[21/9]"
             >
                 <AnimatePresence mode="sync">
                     <motion.div

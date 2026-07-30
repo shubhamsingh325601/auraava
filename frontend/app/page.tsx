@@ -29,8 +29,8 @@ const StatsSection = dynamic(() => import("@/components/home/stats"), {
 })
 
 export const metadata: Metadata = {
-    title: "Auraava - Natural Hair Care Products",
-    description: "Natural hair care products with pure ingredients. Organic, cruelty-free shampoos, oils, serums, and sprays for radiant hair.",
+    title: "Auraava - Rooted in Ritual | Natural Hair Care Products",
+    description: "Rooted in ritual. Natural hair care products with pure ingredients. Organic, cruelty-free shampoos, oils, serums, and sprays for radiant hair.",
     alternates: {
         canonical: '/',
     },
@@ -41,7 +41,7 @@ export default function HomePage() {
         <div className="min-h-screen bg-background overflow-x-hidden w-full">
             <Header />
             <main className="overflow-x-hidden w-full">
-                <h1 className="sr-only">Auraava - Natural Hair Care Products</h1>
+                <h1 className="sr-only">Auraava — Rooted in Ritual. Natural Hair Care Products.</h1>
                 <HeroCarousel />
                 <TrustBar />
                 <Categories />

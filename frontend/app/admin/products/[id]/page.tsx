@@ -31,6 +31,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
     const [formData, setFormData] = useState({
         name: "",
         category: "shampoos",
+        subCategory: "",
         shortDescription: "",
         fullDescription: "",
         price: "",
@@ -57,10 +58,11 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
             const res = await adminFetch(`/api/products/${params.id}`)
             const data = await res.json()
             if (data.product) {
-                setFormData({
-                    name: data.product.name,
-                    category: data.product.category,
-                    shortDescription: data.product.shortDescription,
+                    setFormData({
+                        name: data.product.name,
+                        category: data.product.category,
+                        subCategory: data.product.subCategory || "",
+                        shortDescription: data.product.shortDescription,
                     fullDescription: data.product.fullDescription,
                     price: data.product.price.toString(),
                     rating: data.product.rating,
@@ -188,6 +190,20 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                             <option value="serums">Serums</option>
                             <option value="oils">Oils</option>
                             <option value="sprays">Sprays</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label className="block text-xs uppercase tracking-wider font-semibold text-primary mb-2">Sub-Category</label>
+                        <select
+                            value={formData.subCategory}
+                            onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                            className="w-full px-4 py-3 bg-white border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        >
+                            <option value="">None</option>
+                            <option value="growth-oil">Hair Growth Oil</option>
+                            <option value="nourishing-oil">Nourishing Oil</option>
+                            <option value="anti-dandruff-oil">Anti-Dandruff Oil</option>
                         </select>
                     </div>
 

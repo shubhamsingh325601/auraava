@@ -15,6 +15,7 @@ interface Product {
     id: string
     name: string
     category: string
+    subCategory: string
     shortDescription: string
     price: number
     currency: string
@@ -40,6 +41,13 @@ const FILTERS: { id: string; label: string }[] = [
     { id: "sprays", label: "Hair Sprays" },
 ]
 
+const OIL_SUB_CATEGORIES: { id: string; label: string }[] = [
+    { id: "all", label: "All Oils" },
+    { id: "growth-oil", label: "Hair Growth Oil" },
+    { id: "nourishing-oil", label: "Nourishing Oil" },
+    { id: "anti-dandruff-oil", label: "Anti-Dandruff Oil" },
+]
+
 export default function ProductsPage() {
     return (
         <Suspense fallback={null}>
@@ -52,6 +60,7 @@ function ProductsPageInner() {
     const searchParams = useSearchParams()
     const [products, setProducts] = useState<Product[]>([])
     const [activeFilter, setActiveFilter] = useState("all")
+    const [activeSubFilter, setActiveSubFilter] = useState("all")
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -62,6 +71,7 @@ function ProductsPageInner() {
         const category = searchParams.get("category")
         if (category && FILTERS.some((f) => f.id === category)) {
             setActiveFilter(category)
+            setActiveSubFilter("all")
         }
     }, [searchParams])
 
@@ -77,7 +87,10 @@ function ProductsPageInner() {
         }
     }
 
-    const filteredProducts = activeFilter === "all" ? products : products.filter((p) => p.category === activeFilter)
+    const filteredByCategory = activeFilter === "all" ? products : products.filter((p) => p.category === activeFilter)
+    const filteredProducts = activeFilter === "oils" && activeSubFilter !== "all"
+        ? filteredByCategory.filter((p) => p.subCategory === activeSubFilter)
+        : filteredByCategory
 
     return (
         <div className="min-h-screen bg-ivory">
@@ -111,6 +124,26 @@ function ProductsPageInner() {
                                 )
                             })}
                         </div>
+
+                        {activeFilter === "oils" && (
+                            <div className="flex flex-wrap gap-2 md:gap-3 mb-10 justify-center">
+                                {OIL_SUB_CATEGORIES.map((f) => {
+                                    const active = activeSubFilter === f.id
+                                    return (
+                                        <button
+                                            key={f.id}
+                                            onClick={() => setActiveSubFilter(f.id)}
+                                            className={`px-4 h-8 rounded-full text-[10px] uppercase tracking-[0.16em] font-semibold border transition-all duration-300 ${active
+                                                ? "bg-accent-gold text-white border-accent-gold shadow-card"
+                                                : "bg-transparent text-muted-foreground border-border hover:border-accent-gold"
+                                                }`}
+                                        >
+                                            {f.label}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        )}
 
                         {loading ? (
                             <div className="flex flex-col items-center justify-center gap-3 py-20 text-muted-foreground">

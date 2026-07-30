@@ -85,7 +85,7 @@ export default function MainNavigation() {
                             <li key={link.href}>
                                 <Link
                                     href={link.href}
-                                    className="text-[12px] font-medium uppercase tracking-[0.14em] text-white/80 hover:text-accent-gold relative group py-2"
+                                    className={`text-[12px] font-medium uppercase tracking-[0.14em] relative group py-2 ${transparent ? "text-primary" : "text-white"} hover:text-accent-gold`}
                                 >
                                     {link.label}
                                     <span className="absolute left-1/2 -translate-x-1/2 -bottom-0.5 h-px w-0 bg-accent-gold transition-all duration-300 group-hover:w-full" />
