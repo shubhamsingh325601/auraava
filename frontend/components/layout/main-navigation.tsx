@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ShoppingBag } from "lucide-react"
 import { BRAND } from "@/lib/site-config"
+import { useCart } from "@/lib/cart-context"
 import Logo from "./logo"
 
 const navLinks = [
@@ -22,6 +23,7 @@ const TICKER = "✦ Free shipping on orders above ₹999    ✦ 100% Natural & C
 export default function MainNavigation() {
     const pathname = usePathname()
     const isHome = pathname === "/"
+    const { itemCount } = useCart()
 
     const [isOpen, setIsOpen] = useState(false)
     const [showNav, setShowNav] = useState(true)
@@ -93,10 +95,30 @@ export default function MainNavigation() {
                         ))}
                     </ul>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                        <Link
+                            href="/cart"
+                            aria-label={`Cart with ${itemCount} item${itemCount === 1 ? "" : "s"}`}
+                            className={`relative grid place-items-center min-w-[44px] min-h-[44px] rounded-full transition ${
+                                transparent
+                                    ? "bg-white/15 backdrop-blur-md text-primary hover:bg-white/25"
+                                    : "text-white hover:bg-white/10"
+                            }`}
+                        >
+                            <ShoppingBag className="w-5 h-5" />
+                            {itemCount > 0 && (
+                                <span className="absolute -top-0.5 -right-0.5 min-w-5 h-5 px-1 rounded-full bg-accent-gold text-white text-[10px] font-bold grid place-items-center leading-none">
+                                    {itemCount > 9 ? "9+" : itemCount}
+                                </span>
+                            )}
+                        </Link>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="lg:hidden grid place-items-center min-w-[44px] min-h-[44px] rounded-full text-white"
+                            className={`lg:hidden grid place-items-center min-w-[44px] min-h-[44px] rounded-full transition ${
+                                transparent
+                                    ? "bg-white/15 backdrop-blur-md text-primary hover:bg-white/25"
+                                    : "text-white hover:bg-white/10"
+                            }`}
                             aria-label="Toggle menu"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}

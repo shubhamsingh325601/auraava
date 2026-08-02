@@ -9,7 +9,7 @@ import FounderStory from '../lib/models/FounderStory'
 const FOUNDERS = [
     {
         name: 'Founder Name',
-        role: 'Founder & CEO, Auraava',
+        role: 'Founder, Auraava',
         photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=600&fit=crop&crop=faces',
         quote: 'Pure ingredients for radiant hair and skin — that belief is where Auraava began.',
         story: 'Auraava was born from a simple frustration: shelves full of hair and skin products loaded with ingredients we couldn\'t pronounce, and none that felt made for us.\n\nSo we started small — researching traditional, plant-based formulas and pairing them with modern science, testing every batch ourselves before it ever reached a customer.\n\nToday, Auraava is built on that same promise: natural, effective self-care, backed by science, made for real people.',

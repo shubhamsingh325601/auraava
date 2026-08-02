@@ -21,14 +21,14 @@ const PRODUCTS = [
         name: 'Amla & Bhringraj Hair Oil', category: 'oils',
         shortDescription: 'Cold-pressed Ayurvedic oil for stronger, longer hair.',
         fullDescription: 'A timeless blend of Amla, Bhringraj and Sesame oils, cold-pressed and slow-infused to deeply nourish the scalp, awaken roots and restore natural shine.',
-        price: 599, images: [img('prod-1.jpg')], mainImage: img('prod-1.jpg'), rating: 4.9, reviews: 218, bestSeller: true, inStock: true,
+        price: 599, images: [img('prod-1.jpg')], mainImage: img('prod-1.jpg'), rating: 4.9, reviews: 218, bestSeller: true, inStock: true, directCheckoutEnabled: true,
         keyBenefits: [{ label: 'Reduces hair fall', icon: 'Sparkles' }, { label: 'Boosts root strength', icon: 'Sparkles' }, { label: 'Adds natural shine', icon: 'Sparkles' }, { label: 'Soothes scalp', icon: 'Sparkles' }],
     },
     {
         name: 'Rose & Jojoba Cleansing Shampoo', category: 'shampoos',
         shortDescription: 'Sulphate-free shampoo that cleanses gently and softens hair.',
         fullDescription: 'A luxuriously creamy, sulphate-free shampoo infused with Damask Rose, Jojoba and Aloe Vera — for hair that feels clean, soft and beautifully fragrant.',
-        price: 749, images: [img('prod-2.jpg')], mainImage: img('prod-2.jpg'), rating: 4.8, reviews: 162, bestSeller: true, inStock: true,
+        price: 749, images: [img('prod-2.jpg')], mainImage: img('prod-2.jpg'), rating: 4.8, reviews: 162, bestSeller: true, inStock: true, directCheckoutEnabled: true,
         keyBenefits: [{ label: 'Sulphate-free formula', icon: 'Sparkles' }, { label: 'Hydrates the scalp', icon: 'Sparkles' }, { label: 'Safe for colored hair', icon: 'Sparkles' }, { label: 'Adds softness', icon: 'Sparkles' }],
     },
     {

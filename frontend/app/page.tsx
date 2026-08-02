@@ -18,9 +18,6 @@ const SkinCareSection = dynamic(() => import("@/components/home/skin-care-tips")
 const Testimonials = dynamic(() => import("@/components/home/testimonials"), {
     ssr: true,
 })
-const InstaGallerySection = dynamic(() => import("@/components/home/instagram"), {
-    ssr: true,
-})
 const FAQs = dynamic(() => import("@/components/home/faqs"), {
     ssr: true,
 })
@@ -49,7 +46,6 @@ export default function HomePage() {
                 <ProductCarousel />
                 <SkinCareSection />
                 <Testimonials />
-                <InstaGallerySection />
                 <StatsSection />
                 <FAQs />
             </main>
