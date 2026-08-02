@@ -87,7 +87,7 @@ export default function SpecialOffers() {
                     {offers.map((offer, i) => (
                         <Reveal key={offer.id} delay={i * 0.08} className="h-full">
                             <article className="group relative rounded-2xl overflow-hidden shadow-card hover:shadow-hover transition-shadow bg-ivory text-foreground h-full flex flex-col">
-                                <div className="relative aspect-[5/4] overflow-hidden bg-cream">
+                                <div className="relative aspect-[20/20] overflow-hidden bg-cream">
                                     <Image
                                         src={offer.image}
                                         alt={offer.title}

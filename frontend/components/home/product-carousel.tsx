@@ -26,13 +26,6 @@ interface Product {
     bestSeller?: boolean
 }
 
-const CATEGORY_LABELS: Record<string, string> = {
-    oils: "Hair Oils",
-    shampoos: "Shampoos",
-    serums: "Hair Serums",
-    sprays: "Hair Sprays",
-}
-
 interface ProductCarouselProps {
     eyebrowText?: string
     heading?: string
@@ -137,7 +130,6 @@ export default function ProductCarousel({
                         {visibleProducts.map((product) => {
                             const rating = product.rating ?? 0
                             const reviews = product.reviews ?? 0
-                            const categoryLabel = CATEGORY_LABELS[product.category] ?? product.category
 
                             return (
                                 <CarouselItem key={product.id} className="basis-[80%] sm:basis-[48%] lg:basis-[31%] xl:basis-[24%]">
@@ -150,16 +142,6 @@ export default function ProductCarousel({
                                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                                 loading="lazy"
                                             />
-                                            {categoryLabel && (
-                                                <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-sage/90 backdrop-blur text-[10px] uppercase tracking-[0.14em] font-semibold text-primary">
-                                                    {categoryLabel}
-                                                </span>
-                                            )}
-                                            {product.bestSeller && (
-                                                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-accent-gold text-white text-[10px] uppercase tracking-[0.14em] font-semibold">
-                                                    ✦ Bestseller
-                                                </span>
-                                            )}
                                         </Link>
                                         <div className="p-5 flex-1 flex flex-col text-left">
                                             <Link href={`/products/${product.id}`}>

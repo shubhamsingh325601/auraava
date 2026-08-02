@@ -60,8 +60,7 @@ export default function Categories() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
                                 <div className="absolute inset-0 p-5 md:p-7 flex flex-col justify-end text-white">
-                                    <h3 className="font-serif text-xl md:text-2xl">{category.name}</h3>
-                                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] tracking-[0.14em] uppercase">
+                                    <span className="inline-flex items-center gap-1 text-[11px] tracking-[0.14em] uppercase opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                                         Shop now <ArrowUpRight className="w-3.5 h-3.5" />
                                     </span>
                                 </div>
