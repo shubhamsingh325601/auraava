@@ -17,6 +17,7 @@ import statsRoutes from './routes/stats'
 import aboutUsRoutes from './routes/about-us'
 import founderStoriesRoutes from './routes/founder-stories'
 import offersRoutes from './routes/offers'
+import heroBannersRoutes from './routes/hero-banners'
 import instagramRoutes from './routes/instagram'
 import hairQuizRoutes from './routes/hair-quiz'
 import skincareRoutes from './routes/skincare'
@@ -73,6 +74,7 @@ app.use('/api/stats', statsRoutes)
 app.use('/api/about-us', aboutUsRoutes)
 app.use('/api/founder-stories', founderStoriesRoutes)
 app.use('/api/offers', offersRoutes)
+app.use('/api/hero-banners', heroBannersRoutes)
 app.use('/api/instagram', instagramRoutes)
 app.use('/api/hair-quiz', hairQuizRoutes)
 app.use('/api/skincare', skincareRoutes)

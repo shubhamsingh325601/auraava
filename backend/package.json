@@ -12,6 +12,7 @@
         "seed:hair-quiz": "ts-node scripts/seed-hair-quiz.ts",
         "seed:founder-stories": "ts-node scripts/seed-founder-stories.ts",
         "seed:instagram": "ts-node scripts/seed-instagram-live.ts",
+        "seed:hero-banners": "ts-node scripts/seed-hero-banners.ts",
         "update:data": "ts-node scripts/update-data.ts"
     },
     "dependencies": {

@@ -20,6 +20,7 @@ import {
     BarChart3,
     ClipboardList,
     MessageSquare,
+    ImageIcon,
     Loader2
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -27,6 +28,7 @@ import { Button } from "@/components/ui/button"
 interface SectionCount {
     products: number | null
     offers: number | null
+    heroBanners: number | null
     testimonials: number | null
     faqs: number | null
     hairCare: number | null
@@ -41,6 +43,7 @@ const SUMMARY_CARDS = [
     { key: "orders" as const, label: "Orders", icon: ClipboardList, href: "/admin/orders", cta: "Manage Orders" },
     { key: "products" as const, label: "Products", icon: Package, href: "/admin/products", cta: "Manage Products" },
     { key: "offers" as const, label: "Special Offers", icon: Tag, href: "/admin/offers", cta: "Manage Offers" },
+    { key: "heroBanners" as const, label: "Hero Banners", icon: ImageIcon, href: "/admin/hero-banners", cta: "Manage Banners" },
     { key: "testimonials" as const, label: "Testimonials", icon: Star, href: "/admin/testimonials", cta: "Manage Testimonials" },
     { key: "faqs" as const, label: "FAQs", icon: HelpCircle, href: "/admin/faqs", cta: "Manage FAQs" },
     { key: "hairCare" as const, label: "Hair Care Tips", icon: Sparkles, href: "/admin/hair-care", cta: "Manage Hair Care" },
@@ -55,6 +58,7 @@ export default function AdminDashboard() {
     const [counts, setCounts] = useState<SectionCount>({
         products: null,
         offers: null,
+        heroBanners: null,
         testimonials: null,
         faqs: null,
         hairCare: null,
@@ -72,9 +76,10 @@ export default function AdminDashboard() {
 
     const fetchAllCounts = async () => {
         try {
-            const [productsRes, offersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, founderStoriesRes, ordersRes, quizResponsesRes] = await Promise.all([
+            const [productsRes, offersRes, heroBannersRes, testimonialsRes, faqsRes, hairCareRes, instagramRes, aboutUsRes, founderStoriesRes, ordersRes, quizResponsesRes] = await Promise.all([
                 adminFetch('/api/products'),
                 adminFetch('/api/offers'),
+                adminFetch('/api/hero-banners/all'),
                 adminFetch('/api/testimonials'),
                 adminFetch('/api/faqs'),
                 adminFetch('/api/hair-care'),
@@ -85,9 +90,10 @@ export default function AdminDashboard() {
                 adminFetch('/api/hair-quiz/responses', { credentials: 'include' }),
             ])
 
-            const [productsData, offersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, founderStoriesData, ordersData, quizResponsesData] = await Promise.all([
+            const [productsData, offersData, heroBannersData, testimonialsData, faqsData, hairCareData, instagramData, aboutUsData, founderStoriesData, ordersData, quizResponsesData] = await Promise.all([
                 productsRes.json(),
                 offersRes.json(),
+                heroBannersRes.json(),
                 testimonialsRes.json(),
                 faqsRes.json(),
                 hairCareRes.json(),
@@ -101,6 +107,7 @@ export default function AdminDashboard() {
             setCounts({
                 products: (productsData.products || []).length,
                 offers: (offersData.offers || []).length,
+                heroBanners: (heroBannersData.banners || []).length,
                 testimonials: (testimonialsData.testimonials || []).length,
                 faqs: (faqsData.faqs || []).length,
                 hairCare: (hairCareData.items || []).length,
